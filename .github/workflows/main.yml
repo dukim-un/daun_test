@@ -48,18 +48,18 @@ jobs:
 
     - name: Install ncp-iam-authenticator
       run: |
-        mkdir -p /ncp
-        curl -Lo /ncp/ncp-iam-authenticator https://github.com/ncloudtech/ncp-iam-authenticator/releases/latest/download/ncp-iam-authenticator_linux_amd64
-        chmod +x /ncp/ncp-iam-authenticator
-        sudo mv /ncp/ncp-iam-authenticator /usr/local/bin/
-        ls -l /ncp
+        mkdir -p $HOME/ncp
+        curl -Lo $HOME/ncp/ncp-iam-authenticator https://github.com/ncloudtech/ncp-iam-authenticator/releases/latest/download/ncp-iam-authenticator_linux_amd64
+        chmod +x $HOME/ncp/ncp-iam-authenticator
+        sudo mv $HOME/ncp/ncp-iam-authenticator /usr/local/bin/
+        ls -l $HOME/ncp
 
     - name: Generate kubeconfig with ncp-iam-authenticator
       env:
         NCP_ACCESSKEY: ${{ secrets.NCP_ACCESSKEY }}
         NCP_SECRETKEY: ${{ secrets.NCP_SECRETKEY }}
       run: |
-        /ncp/ncp-iam-authenticator create-kubeconfig \
+        $HOME/ncp/ncp-iam-authenticator create-kubeconfig \
           --region KR \
           --clusterUuid 25c062ae-b203-4e84-94bf-282fdf27f9b6 \
           --output $HOME/.kube/config
