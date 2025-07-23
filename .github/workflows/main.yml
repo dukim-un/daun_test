@@ -79,5 +79,5 @@ jobs:
 
     - name: Deploy to NKS
       run: |
-        kubectl set image deployment/api-consumer api-consumer=zcon-nipa-container-registry.kr.ncr.ntruss.com/data_insert:${{ steps.version.outputs.tag }} --record -n daun
+        kubectl set image deployment/api-consumer consumer=zcon-nipa-container-registry.kr.ncr.ntruss.com/data_insert:${{ steps.version.outputs.tag }} --record -n daun
         kubectl rollout status deployment/api-consumer -n daun
