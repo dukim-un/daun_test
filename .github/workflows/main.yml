@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'Dockerfile'
-      - 'src/**'  # 혹은 API 관련 코드 경로만 지정
 
 jobs:
   build-and-deploy:
