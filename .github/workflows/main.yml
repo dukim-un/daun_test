@@ -48,7 +48,7 @@ jobs:
 
     - name: Install ncp-iam-authenticator
       run: |
-        curl -Lo ncp-iam-authenticator https://github.com/ncloudtech/ncp-iam-authenticator/releases/latest/download/ncp-iam-authenticator-linux-amd64
+        curl -Lo ncp-iam-authenticator https://github.com/ncloudtech/ncp-iam-authenticator/releases/latest/download/ncp-iam-authenticator_linux_amd64
         chmod +x ncp-iam-authenticator
         sudo mv ncp-iam-authenticator /usr/local/bin/
 
