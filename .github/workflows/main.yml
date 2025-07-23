@@ -67,8 +67,7 @@ jobs:
       run: |
         ncp-iam-authenticator update-kubeconfig \
           --region KR \
-          --clusterUuid 25c062ae-b203-4e84-94bf-282fdf27f9b6 \
-          --output $HOME/.kube/config
+          --clusterUuid 25c062ae-b203-4e84-94bf-282fdf27f9b6
 
     - name: Check NKS nodes
       run: |
