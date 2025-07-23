@@ -51,7 +51,6 @@ jobs:
         curl -o ncp-iam-authenticator -L https://github.com/NaverCloudPlatform/ncp-iam-authenticator/releases/latest/download/ncp-iam-authenticator_linux_amd64
         chmod +x ncp-iam-authenticator
         sudo mv ncp-iam-authenticator /usr/local/bin/
-        ls -l /usr/local/bin/
 
     - name: Set up NCP credentials
       run: |
@@ -65,9 +64,12 @@ jobs:
 
     - name: Generate kubeconfig with ncp-iam-authenticator
       run: |
+        ls -l $HOME/.ncloud
+        cat $HOME/.ncloud/configure
         ncp-iam-authenticator update-kubeconfig \
           --region KR \
-          --clusterUuid 25c062ae-b203-4e84-94bf-282fdf27f9b6
+          --clusterUuid 25c062ae-b203-4e84-94bf-282fdf27f9b6 \
+          --profile default
 
     - name: Check NKS nodes
       run: |
