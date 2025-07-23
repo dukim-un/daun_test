@@ -62,7 +62,15 @@ jobs:
         ncloud_api_url = https://ncloud.apigw.ntruss.com
         EOF
 
-
+    - name: Generate kubeconfig with ncp-iam-authenticator
+      run: |
+        ls -l $HOME/.ncloud
+        cat $HOME/.ncloud/configure
+        ncp-iam-authenticator update-kubeconfig \
+          --region KR \
+          --clusterUuid 25c062ae-b203-4e84-94bf-282fdf27f9b6 \
+          --profile default \
+          --overwrite
 
     - name: Check NKS nodes
       run: |
