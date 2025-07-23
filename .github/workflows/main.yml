@@ -58,8 +58,8 @@ jobs:
         mkdir -p $HOME/.ncloud
         cat <<EOF > $HOME/.ncloud/configure
         [default]
-        access_key = ${{ secrets.NCP_ACCESSKEY }}
-        secret_key = ${{ secrets.NCP_SECRETKEY }}
+        ncloud_access_key_id = ${{ secrets.NCP_ACCESSKEY }}
+        ncloud_secret_access_key = ${{ secrets.NCP_SECRETKEY }}
         ncloud_api_url = https://ncloud.apigw.ntruss.com
         EOF
 
@@ -71,6 +71,7 @@ jobs:
 
     - name: Check NKS nodes
       run: |
+        ls $HOME
         kubectl get nodes
 
     - name: Deploy to NKS
