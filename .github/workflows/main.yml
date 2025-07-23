@@ -48,16 +48,22 @@ jobs:
 
     - name: Install ncp-iam-authenticator
       run: |
-        mkdir -p $HOME/ncp
         curl -o ncp-iam-authenticator -L https://github.com/NaverCloudPlatform/ncp-iam-authenticator/releases/latest/download/ncp-iam-authenticator_linux_amd64
         chmod +x ncp-iam-authenticator
         sudo mv ncp-iam-authenticator /usr/local/bin/
-        ls -l $HOME
+        ls -l /usr/local/bin/
+
+    - name: Set up NCP credentials
+      run: |
+        mkdir -p $HOME/.ncloud
+        cat <<EOF > $HOME/.ncloud/configure
+        [default]
+        access_key = ${{ secrets.NCP_ACCESSKEY }}
+        secret_key = ${{ secrets.NCP_SECRETKEY }}
+        ncloud_api_url = https://ncloud.apigw.ntruss.com
+        EOF
 
     - name: Generate kubeconfig with ncp-iam-authenticator
-      env:
-        NCP_ACCESSKEY: ${{ secrets.NCP_ACCESSKEY }}
-        NCP_SECRETKEY: ${{ secrets.NCP_SECRETKEY }}
       run: |
         ncp-iam-authenticator create-kubeconfig \
           --region KR \
