@@ -8,7 +8,7 @@ DB_HOST = os.getenv("MYSQL_HOST", "mysql")
 DB_USER = os.getenv("MYSQL_USER", "zcon")
 DB_PASS = os.getenv("MYSQL_PASSWORD", "toor")
 DB_NAME = os.getenv("MYSQL_DATABASE", "test")
-KAFKA_BROKER = os.getenv("KAFKA_BROKER", "kafka-kafka-3a116-107395102-6c3889f007e6.kr.lb.naverncp.com:9094")
+KAFKA_BROKER = os.getenv("KAFKA_BROKER", "kafka-kafka-3a116-107395102-6c3889f007e6.kr.lb.naverncp.com:9092")
 TOPIC = os.getenv("KAFKA_TOPIC", "test-topic")
 
 # MySQL 연결
